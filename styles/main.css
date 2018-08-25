@@ -1,0 +1,79 @@
+/*
+
+Color Theme:
+
+yellow 		#F8D719;
+tbLight 	#95C0F7;
+tbDark 		#092C5C;
+correct 	#22bb33;
+incorrect #bb2124;
+grey 			#aaaaaa;
+
+*/
+
+.game-title {
+	position: relative;
+	border-radius: 12px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #F8D719;
+	background: linear-gradient(to right bottom, #95C0F7, #fcf592);
+	text-align: center;
+	font-family: avenir;
+	color: #092C5C;
+	padding: 2% 0 2% 0;
+}
+
+.dashboard {
+	background: linear-gradient(to right bottom, #092C5C, #95C0F7);
+	color: #F8D719;
+	font-family: avenir;
+	font-size: 1.5em;
+}
+
+.game-number {
+	text-align: center;
+	font-weight: bold;
+}
+
+.guessbox {
+	text-align: center;
+	padding-top: 2%;
+	padding-bottom: 1%
+}
+
+.guess {
+	color: black;
+}
+
+.game {
+	background: linear-gradient(to right bottom, #F8D719, white);
+	padding: 1% 0 4% 0;
+	height: 700px;
+}
+
+.letter-row {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+
+.letterdiv {
+	display: inline-block;
+	margin: 0.5% 0.5% 0.5% 0.5%;
+	font-weight: bolder;
+	font-family: times;
+	font-size: 1.5em;
+	color: darkgrey;
+}
+
+.gallows-row {
+	height: 100%;
+}
+
+.gallows {
+	position: relative;
+	padding: 1% 0 1% 0;
+	height: 50px;
+	text-align: center;
+}
