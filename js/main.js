@@ -3,6 +3,9 @@ var gameActive = false;
 var gameNumber = 0;
 var gameWord = null;
 var letterBoxRow = document.getElementsByClassName('letter-boxes')[0];
+var letterBoxes = document.getElementsByClassName('letter-box');
+var guessLetterBox = document.getElementsByClassName('letter')[0];
+var guessWordBox = document.getElementsByClassName('word')[0];
 
 
 var wordList = {
@@ -12,8 +15,8 @@ var wordList = {
 };
 
 function generateWord(param) {
-	var x = Math.floor(Math.random() * wordList.param.length);
-	return wordList.param[x];
+	var x = Math.floor(Math.random() * wordList[param].length);
+	return wordList[param][x];
 }
 
 function displayBlanks(text) {
@@ -24,24 +27,43 @@ function displayBlanks(text) {
 	}
 }
 
-function newGame(wordLen) {
-	console.log('reached point A');
+function newGame(param) {
 	if (!gameActive) {
-//		gameActive = true;
+		gameActive = true;
 		for (var i=0; i<bodyParts.length; i++) {
 			bodyParts[i].style.display = 'none';
 		}
-		console.log('reached point B');
-		gameWord = generateWord(wordLen);
+		gameWord = generateWord(param);
 		console.log("gameWord = " + gameWord);
 		displayBlanks(gameWord);
 	}
 }
 
 
+function checkLetter() {
+	console.log('checkLetter works');
+	var letter = guessLetterBox.value;
+	for (var i=0; i<gameWord.length; i++) {
+		if (gameWord[i] == letter) {
+			letterBoxes[i].style.color = '#092C5C';
+			letterBoxes[i].style.borderColor = '#22bb33';
+		}
+	}
+	setTimeout(function() {
+		for (var i=0; i<gameWord.length; i++) {
+			if (letterBoxes[i].style.borderColor != '#95C0F7') {
+				letterBoxes[i].style.borderColor = '#95C0F7';
+			}
+		}
+	}, 500)
+	guessLetterBox.value = '';
+}
 
-
-
+guessLetterBox.addEventListener('keyup', function(event) {
+	if (event.keyCode === 13) {
+		checkLetter();	
+	}
+})
 
 
 

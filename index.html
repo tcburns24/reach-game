@@ -19,10 +19,12 @@
 					<input type="button" value="New Game" class="btn btn-success" style="padding:1% 1% 1% 1%">
 				</div>
 				<div class="col-lg-6 guessbox letter-guess">
-					<input type="text" class="guess letter" placeholder="Guess A Letter">
+<!--					<form onsubmit="checkLetter()">-->
+					<input type="text" class="guess letter" placeholder="Guess a letter" maxlength="1"/>
+<!--					</form>-->
 				</div>
 				<div class="col-lg-6 guessbox word-guess">
-					<input type="text" class="guess word" placeholder="Guess A Letter">
+					<input type="text" class="guess word" placeholder="Guess the word">
 				</div>
 			</div>
 		</section>
@@ -53,7 +55,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-2"></div>
-				<div class="col-lg-8 letter-boxes">letter boxes</div>
+				<div class="col-lg-8 letter-boxes"></div>
 			</div>
 	
 		</section>

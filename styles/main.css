@@ -68,7 +68,7 @@ grey 			#aaaaaa;
 }
 
 .gallows-row {
-	height: 65%;
+	height: 55%;
 }
 
 .gallows {
@@ -159,6 +159,25 @@ grey 			#aaaaaa;
 	transform: rotate(-30deg);
 	right: 57%;
 	top: 43%
+}
+
+.letter-boxes {
+	text-align: center;
+}
+
+.letter-box {
+	position: relative;
+	width: 8%;
+	display: inline-block;
+	border-style: solid;
+	border-color: #95C0F7;
+	border-radius: 10px;
+	border-width: 5px;
+	font-size: 34px;
+	padding: 2% 2% 2% 2%;
+	margin: 0 1% 0 1%;
+	background-color: #F8D719;
+	color: #F8D719;
 }
 
 
