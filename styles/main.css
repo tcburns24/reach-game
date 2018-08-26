@@ -38,7 +38,7 @@ grey 			#aaaaaa;
 
 .guessbox {
 	text-align: center;
-	padding-top: 2%;
+/*	padding-top: 1%;*/
 	padding-bottom: 1%
 }
 
@@ -49,7 +49,7 @@ grey 			#aaaaaa;
 .game {
 	background: linear-gradient(to right bottom, #F8D719, white);
 	padding: 1% 0 4% 0;
-	height: 1100px;
+	height: 1000px;
 }
 
 .letter-row {
@@ -68,18 +68,13 @@ grey 			#aaaaaa;
 }
 
 .gallows-row {
-	height: 100%;
-	border-style
+	height: 65%;
 }
 
 .gallows {
 	position: relative;
-	padding: 1% 0 1% 0;
-	height: 50px;
+	padding: 1% 0 4% 0;
 	text-align: center;
-	border-style:dashed;
-	border-color: purple;
-	border-width: 1px;
 	height: 35em;
 }
 

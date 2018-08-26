@@ -13,7 +13,11 @@
 				<h1>HANGMAN</h1>
 			</div>
 			<div class="row dashboard">
-				<div class="col-lg-12 game-number">Game #</div>
+				<div class="col-lg-6 game-number">Game #</div>
+				<div class="col-lg-6 game-record" style="text-align: center">Win-Loss Record:</div>
+				<div class="col-lg-12" style="text-align: center">
+					<input type="button" value="New Game" class="btn btn-success" style="padding:1% 1% 1% 1%">
+				</div>
 				<div class="col-lg-6 guessbox letter-guess">
 					<input type="text" class="guess letter" placeholder="Guess A Letter">
 				</div>
@@ -33,7 +37,7 @@
 				</div>
 			</div>
 			<div class="row gallows-row">
-				<div class="col-lg-4"></div>
+				<div class="col-lg-3"></div>
 				<div class="col-lg-5 gallows">
 					<div class="board board-right"></div>
 					<div class="board board-hook"></div>
@@ -48,8 +52,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-12">letter underscore row</div>
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8 letter-boxes">letter boxes</div>
 			</div>
+	
 		</section>
 		
 		<script src="js/main.js"></script>
