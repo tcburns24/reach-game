@@ -31,6 +31,19 @@ grey 			#aaaaaa;
 	font-size: 1.5em;
 }
 
+.modal {
+	position: absolute;
+	display: none;
+	background-color: aliceblue;
+	width: 40%;
+	height: 40%;
+	border-style: solid;
+	border-radius: 12px;
+	border-width: 2px;
+	padding: 2% 2% 2% 2%;
+	margin: 15% 0 0 28%;
+}
+
 .game-number {
 	text-align: center;
 	font-weight: bold;

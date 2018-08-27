@@ -6,17 +6,25 @@ var letterBoxRow = document.getElementsByClassName('letter-boxes')[0];
 var letterBoxes = document.getElementsByClassName('letter-box');
 var guessLetterBox = document.getElementsByClassName('letter')[0];
 var guessWordBox = document.getElementsByClassName('word')[0];
+var wordList = [];
 
 
-var wordList = {
-	short: ['bug', 'run', 'tall', 'warm', 'cold'],
-	medium: ['weather', 'autumn', 'winter', 'coffee', 'sneaker'],
-	long: ['ubiquitous', 'harmonious', 'starbucks', 'loquacious', 'indigo']
-};
 
-function generateWord(param) {
-	var x = Math.floor(Math.random() * wordList[param].length);
-	return wordList[param][x];
+function generateWord(diff, minLen, maxLen) {
+	$.get('http://app.linkedin-reach.io/words', {
+		difficulty: diff,
+		minLength: minLen,
+		maxLength: maxLen,
+		start: 2,
+		count: 50
+	})
+	.done(function(data) {
+		console.log('data = ' + data);
+		for (var i=0; i<data.split('\n').length; i++) {
+			wordList.push(data.split('\n')[i])
+		}
+	})
+	return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
 function displayBlanks(text) {
@@ -27,13 +35,13 @@ function displayBlanks(text) {
 	}
 }
 
-function newGame(param) {
+function newGame(paramArr) {
 	if (!gameActive) {
 		gameActive = true;
 		for (var i=0; i<bodyParts.length; i++) {
 			bodyParts[i].style.display = 'none';
 		}
-		gameWord = generateWord(param);
+		gameWord = generateWord(paramArr[0], paramArr[1], paramArr[2]);
 		console.log("gameWord = " + gameWord);
 		displayBlanks(gameWord);
 	}
@@ -41,7 +49,8 @@ function newGame(param) {
 
 function showModal(modalName) {
 	document.getElementsByClassName(modalName)[0].style.display = 'inline';
-	document.getElementsByClassName('game')[0].style.opacity = '0.4';
+	document.getElementsByClassName('game')[0].style.opacity = '0.2';
+	document.getElementsByClassName('dashboard')[0].style.opacity = '0.2';
 }
 
 
