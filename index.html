@@ -16,12 +16,10 @@
 				<div class="col-lg-6 game-number">Game #</div>
 				<div class="col-lg-6 game-record" style="text-align: center">Win-Loss Record:</div>
 				<div class="col-lg-12" style="text-align: center">
-					<input type="button" value="New Game" class="btn btn-success" style="padding:1% 1% 1% 1%">
+					<input type="button" value="New Game" class="btn btn-success" style="padding:1% 1% 1% 1%" onclick="showModal('start-game')" />
 				</div>
 				<div class="col-lg-6 guessbox letter-guess">
-<!--					<form onsubmit="checkLetter()">-->
 					<input type="text" class="guess letter" placeholder="Guess a letter" maxlength="1"/>
-<!--					</form>-->
 				</div>
 				<div class="col-lg-6 guessbox word-guess">
 					<input type="text" class="guess word" placeholder="Guess the word">
@@ -30,6 +28,31 @@
 		</section>
 		
 		<section class="game">
+			
+			<div class="modal start-game" style="display:none; position: absolute;">
+				<div class="row">
+					<h2>Let's get this party started</h2>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">Choose your word length:</div>
+					<div class="col-lg-6">
+						<select>
+							<option value="short">Short</option>
+							<option value="medium">Medium</option>
+							<option value="long">Long</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<input type="button" class="btn btn-info" value="Start Game" onclick="startGame()"/>
+					</div>
+					<div class="col-lg-6">
+						<input type="button" class="btn btn-danger" value="Cancel" onclick="cancelModal()"/>
+					</div>
+				</div>
+			</div>
+			
 			<div class="row letters">
 				<div class="col-lg-12" style="text-align: center">
 					<h3>Guessed Letters</h3>
