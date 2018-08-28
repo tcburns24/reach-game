@@ -1,3 +1,10 @@
+// Tues 8/28:
+// 1) endGame(win)
+// 2) endGame(loss)
+// 3) calculate win/loss ratio
+// 4) track # of games played
+
+
 var bodyParts = document.getElementsByClassName('body');
 var gameActive = false;
 var gameNumber = 0;
@@ -7,24 +14,26 @@ var letterBoxes = document.getElementsByClassName('letter-box');
 var guessLetterBox = document.getElementsByClassName('letter')[0];
 var guessWordBox = document.getElementsByClassName('word')[0];
 var wordList = [];
+var modals = document.getElementsByClassName('modal');
+var selectors = document.getElementsByClassName('selector');
 
 
 
-function generateWord(diff, minLen, maxLen) {
+function generateWords(minLen, maxLen, diff) {
 	$.get('http://app.linkedin-reach.io/words', {
 		difficulty: diff,
 		minLength: minLen,
 		maxLength: maxLen,
-		start: 2,
-		count: 50
+		start: 5,
+		count: 40
 	})
 	.done(function(data) {
-		console.log('data = ' + data);
-		for (var i=0; i<data.split('\n').length; i++) {
-			wordList.push(data.split('\n')[i])
-		}
+		console.log('---\n1) data = ' + data + "\n---")
+		var myArr = data.split('\n');
+		console.log('---\n2) myArr = ' + myArr + '\n---')
+		gameWord = myArr[Math.floor(Math.random() * myArr.length)];
+		displayBlanks(gameWord);
 	})
-	return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
 function displayBlanks(text) {
@@ -35,22 +44,33 @@ function displayBlanks(text) {
 	}
 }
 
-function newGame(paramArr) {
-	if (!gameActive) {
-		gameActive = true;
-		for (var i=0; i<bodyParts.length; i++) {
-			bodyParts[i].style.display = 'none';
-		}
-		gameWord = generateWord(paramArr[0], paramArr[1], paramArr[2]);
-		console.log("gameWord = " + gameWord);
-		displayBlanks(gameWord);
+function newGame() {
+	for (var i=0; i<bodyParts.length; i++) {
+		bodyParts[i].style.display = 'none';
 	}
+	generateWords(
+		parseInt(selectors[0].value), 
+		parseInt(selectors[1].value), 
+		parseInt(selectors[2].value)
+	);
+	cancelModal();
 }
 
 function showModal(modalName) {
 	document.getElementsByClassName(modalName)[0].style.display = 'inline';
 	document.getElementsByClassName('game')[0].style.opacity = '0.2';
 	document.getElementsByClassName('dashboard')[0].style.opacity = '0.2';
+}
+
+function cancelModal() {
+	for (var i=0; i<modals.length; i++) {
+		if(modals[i].style.display != 'none') {
+			modals[i].style.display = 'none';
+			break;
+		}
+	}
+	document.getElementsByClassName('game')[0].style.opacity = '1.0';
+	document.getElementsByClassName('dashboard')[0].style.opacity = '1.0';
 }
 
 
