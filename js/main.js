@@ -1,14 +1,16 @@
-// Tues 8/28:
-// 1) endGame(win)
-// 2) endGame(loss)
-// 3) calculate win/loss ratio
-// 4) track # of games played
+// Wed 8/28:
+// 1) Prevent double guessing letters
+// 2) Clean up Modal CSS
+// 3) Include gameWord in win Modal (...or maybe just setTimeout a sec before showModal)
 
 
 var bodyParts = document.getElementsByClassName('body');
-var gameActive = false;
+//var gameActive = false;
 var gameNumber = 0;
+var wins = 0;
 var gameWord = null;
+var wrongLetterCount = 0;
+var correctLetterCount = 0;
 var letterBoxRow = document.getElementsByClassName('letter-boxes')[0];
 var letterBoxes = document.getElementsByClassName('letter-box');
 var guessLetterBox = document.getElementsByClassName('letter')[0];
@@ -45,13 +47,26 @@ function displayBlanks(text) {
 }
 
 function newGame() {
+	gameNumber++;
+	document.getElementsByClassName('gameNumText')[0].textContent = gameNumber;
+	if (gameNumber > 1) {
+		document.getElementsByClassName('winLossText')[0].textContent = (wins/(gameNumber-1)).toFixed(3);
+	}
+	correctLetterCount = 0;
+	wrongLetterCount = 0;
+	letterBoxRow.innerHTML = '';
+	gameWord = null;
 	for (var i=0; i<bodyParts.length; i++) {
 		bodyParts[i].style.display = 'none';
 	}
+	for (var i=0; i<document.getElementsByClassName('letterdiv').length; i++) {
+		document.getElementsByClassName('letterdiv')[i].style.color = 'black';
+		document.getElementsByClassName('letterdiv')[i].style.textDecoration = 'none';
+	}
 	generateWords(
 		parseInt(selectors[0].value), 
-		parseInt(selectors[1].value), 
-		parseInt(selectors[2].value)
+		parseInt(selectors[0].value)+1, 
+		parseInt(selectors[1].value)
 	);
 	cancelModal();
 }
@@ -74,43 +89,29 @@ function cancelModal() {
 }
 
 
-function correctLetter() {
-	var letter = guessLetterBox.value;
-	for (var i=0; i<gameWord.length; i++) {
-		if (gameWord[i] == letter) {
-			letterBoxes[i].style.color = '#092C5C';
-			letterBoxes[i].style.borderColor = '#22bb33';
-		}
-	}
-	setTimeout(function() {
-		for (var i=0; i<gameWord.length; i++) {
-			if (letterBoxes[i].style.borderColor != '#95C0F7') {
-				letterBoxes[i].style.borderColor = '#95C0F7';
-			}
-		}
-	}, 500)
-	guessLetterBox.value = '';
-}
-
-
 function incorrectLetter() {
-	for (var i=0; i<bodyParts.length; i++) {
-		if (bodyParts[i].style.display == 'none') {
-			bodyParts[i].style.display = 'inline';
-			break;
-		}
-	}
-	for (var i=0; i<letterBoxes.length; i++) {
-		letterBoxes[i].style.borderColor = '#bb2124';
-	}
-	setTimeout(function() {
-		for (var i=0; i<letterBoxes.length; i++) {
-			if (letterBoxes[i].style.borderColor != '#95C0F7') {
-				letterBoxes[i].style.borderColor = '#95C0F7';
+	if (wrongLetterCount < 6) {
+		for (var i=0; i<bodyParts.length; i++) {
+			if (bodyParts[i].style.display == 'none') {
+				bodyParts[i].style.display = 'inline';
+				break;
 			}
 		}
-	}, 500)
-	guessLetterBox.value = '';
+		for (var i=0; i<letterBoxes.length; i++) {
+			letterBoxes[i].style.borderColor = '#bb2124';
+		}
+		setTimeout(function() {
+			for (var i=0; i<letterBoxes.length; i++) {
+				if (letterBoxes[i].style.borderColor != '#95C0F7') {
+					letterBoxes[i].style.borderColor = '#95C0F7';
+				}
+			}
+		}, 500)
+		guessLetterBox.value = '';
+	} else {
+		bodyParts[5].style.display = 'inline';
+		recordGame(0);
+	}
 }
 
 
@@ -122,11 +123,49 @@ function checkLetter() {
 		}
 	}
 	if (gameWord.includes(guessLetterBox.value)) {
-		correctLetter();
+		var letter = guessLetterBox.value;
+		for (var i=0; i<gameWord.length; i++) {
+			if (gameWord[i] == letter) {
+				correctLetterCount++;
+				letterBoxes[i].style.color = '#092C5C';
+				letterBoxes[i].style.borderColor = '#22bb33';
+			}
+		}
+		setTimeout(function() {
+			for (var i=0; i<letterBoxes.length; i++) {
+				if (letterBoxes[i].style.borderColor != '#95C0F7') {
+					letterBoxes[i].style.borderColor = '#95C0F7';
+				}
+			}
+		}, 500)
+		guessLetterBox.value = '';
+		if (correctLetterCount == gameWord.length) {
+			recordGame(1);
+		} else {
+			correctLetter();
+		}
 	} else {
+		wrongLetterCount++;
 		incorrectLetter();
 	}
 }
+
+
+//function checkLetter() {
+//	for (var i=0; i<document.getElementsByClassName('letterdiv').length; i++) {
+//		if (document.getElementsByClassName('letterdiv')[i].textContent == guessLetterBox.value.toUpperCase()) {
+//			document.getElementsByClassName('letterdiv')[i].style.color = 'grey';
+//			document.getElementsByClassName('letterdiv')[i].style.textDecoration = 'line-through';
+//		}
+//	}
+//	if (gameWord.includes(guessLetterBox.value)) {
+//		correctLetterCount++;
+//		correctLetter();
+//	} else {
+//		wrongLetterCount++;
+//		incorrectLetter();
+//	}
+//}
 
 
 function correctWord() {
@@ -178,6 +217,21 @@ guessWordBox.addEventListener('keyup', function(event) {
 		checkWord();
 	}
 })
+
+
+function recordGame(result) {
+	if (result === 1) {
+		wins++;
+		showModal('end-game-win');
+	} else if (result === 0) {
+		showModal('end-game-loss');
+	}
+}
+
+
+
+
+
 
 
 

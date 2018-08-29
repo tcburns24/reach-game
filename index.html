@@ -14,8 +14,10 @@
 				<h1>HANGMAN</h1>
 			</div>
 			<div class="row dashboard">
-				<div class="col-lg-6 game-number">Game #</div>
-				<div class="col-lg-6 game-record" style="text-align: center">Win-Loss Record:</div>
+				<div class="col-lg-3 game-number" style="text-align: right">Game #:</div>
+				<div class="col-lg-3 gameNumText">--</div>
+				<div class="col-lg-4 game-record" style="text-align: right">Winning Percentage:</div>
+				<div class="col-lg-2 winLossText">--</div>
 				<div class="col-lg-12" style="text-align: center">
 					<input type="button" value="New Game" class="btn btn-success" style="padding:1% 1% 1% 1%" onclick="showModal('start-game')" />
 				</div>
@@ -40,13 +42,6 @@
 						<option value=4>4</option>
 						<option value=5>5</option>
 						<option value=6>6</option>
-					</select>
-				</div>
-			</div>
-			<div class="row" style="margin: 3% 0 0 10%; text-align: left">
-				<div class="col-lg-6">Maximum word length:</div>
-				<div class="col-lg-2">
-					<select class="selector" style="padding:0 1% 0 1%;">
 						<option value=7>7</option>
 						<option value=8>8</option>
 						<option value=9>9</option>
@@ -54,6 +49,7 @@
 					</select>
 				</div>
 			</div>
+			
 			<div class="row" style="margin: 3% 0 0 10%; text-align: left">
 				<div class="col-lg-6">Word Complexity:</div>
 				<div class="col-lg-2">
@@ -69,6 +65,44 @@
 						<option value=9>Elon Musk</option>
 						<option value=10>LinkedIn Engineer</option>
 					</select>
+				</div>
+			</div>
+			<div class="row" style="text-align:center; margin: 5% 0 0 0">
+				<div class="col-lg-6">
+					<input type="button" class="btn btn-danger" value="Cancel" onclick="cancelModal()"/>
+				</div>
+				<div class="col-lg-4">
+					<input type="button" class="btn btn-info" value="Start Game" onclick="newGame()"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal end-game-win">
+			<div class="row" style="text-align: center">
+				<h2 style="font-family: avenir">You Win!</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-12" style="text-align: center; font-family: avenir">
+					Never quit when you're on a winning streak. How about another game?
+				</div>
+			</div>
+			<div class="row" style="text-align:center; margin: 5% 0 0 0">
+				<div class="col-lg-6">
+					<input type="button" class="btn btn-danger" value="Cancel" onclick="cancelModal()"/>
+				</div>
+				<div class="col-lg-4">
+					<input type="button" class="btn btn-info" value="Start Game" onclick="newGame()"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal end-game-loss">
+			<div class="row" style="text-align: center">
+				<h2 style="font-family: avenir">Aw snap...</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-12" style="text-align: center; font-family: avenir">
+					It's ok, you're still getting warmed up. How about another game?
 				</div>
 			</div>
 			<div class="row" style="text-align:center; margin: 5% 0 0 0">
