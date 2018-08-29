@@ -1,4 +1,4 @@
-// Wed 8/28:
+// Wed 8/29:
 // 1) Prevent double guessing letters
 // 2) Clean up Modal CSS
 // 3) Include gameWord in win Modal (...or maybe just setTimeout a sec before showModal)
@@ -18,7 +18,34 @@ var guessWordBox = document.getElementsByClassName('word')[0];
 var wordList = [];
 var modals = document.getElementsByClassName('modal');
 var selectors = document.getElementsByClassName('selector');
-
+var allLetters = {
+	'a': true,
+	'b': true,
+	'c': true,
+	'd': true,
+	'e': true,
+	'f': true,
+	'g': true,
+	'h': true,
+	'i': true,
+	'j': true,
+	'k': true,
+	'l': true,
+	'm': true,
+	'n': true,
+	'o': true,
+	'p': true,
+	'q': true,
+	'r': true,
+	's': true,
+	't': true,
+	'u': true,
+	'v': true,
+	'w': true,
+	'x': true,
+	'y': true,
+	'z': true
+};
 
 
 function generateWords(minLen, maxLen, diff) {
@@ -46,7 +73,16 @@ function displayBlanks(text) {
 	}
 }
 
+function resetAllLetters() {
+  var keys = Object.keys(allLetters);
+  for (var i=0; i<26; i++) {
+    allLetters[keys[i]] = true;
+  }
+  return allLetters;
+}
+
 function newGame() {
+	resetAllLetters();
 	gameNumber++;
 	document.getElementsByClassName('gameNumText')[0].textContent = gameNumber;
 	if (gameNumber > 1) {
@@ -114,8 +150,20 @@ function incorrectLetter() {
 	}
 }
 
+function flashWarning(letter) {
+	document.getElementsByClassName('warning-text')[0].textContent = 'You already guessed ' + letter;
+	setTimeout(function() {
+		document.getElementsByClassName('warning-text')[0].textContent = '';
+	}, 750);
+}
+
 
 function checkLetter() {
+	if (!allLetters[guessLetterBox.value]) {
+		return flashWarning(guessLetterBox.value);
+	} else {
+		allLetters[guessLetterBox.value] = false;
+	}
 	for (var i=0; i<document.getElementsByClassName('letterdiv').length; i++) {
 		if (document.getElementsByClassName('letterdiv')[i].textContent == guessLetterBox.value.toUpperCase()) {
 			document.getElementsByClassName('letterdiv')[i].style.color = 'grey';
@@ -151,29 +199,12 @@ function checkLetter() {
 }
 
 
-//function checkLetter() {
-//	for (var i=0; i<document.getElementsByClassName('letterdiv').length; i++) {
-//		if (document.getElementsByClassName('letterdiv')[i].textContent == guessLetterBox.value.toUpperCase()) {
-//			document.getElementsByClassName('letterdiv')[i].style.color = 'grey';
-//			document.getElementsByClassName('letterdiv')[i].style.textDecoration = 'line-through';
-//		}
-//	}
-//	if (gameWord.includes(guessLetterBox.value)) {
-//		correctLetterCount++;
-//		correctLetter();
-//	} else {
-//		wrongLetterCount++;
-//		incorrectLetter();
-//	}
-//}
-
-
 function correctWord() {
 	for (var i=0; i<gameWord.length; i++) {
 		letterBoxes[i].style.color = '#092C5C';
 		letterBoxes[i].style.borderColor = '#22bb33';
 	}
-	// endGame() 
+	recordGame(1);
 }
 
 
