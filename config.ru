@@ -2,7 +2,7 @@ use Rack::Static,
 	:urls => ["/templates", "/js", "/styles"],
 	:root => "public"
 
-run lambta { |env|
+run lambda { |env|
 	[
 		200,
 		{
