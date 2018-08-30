@@ -37,12 +37,25 @@ grey 			#aaaaaa;
 	display: none;
 	background-color: aliceblue;
 	width: 40%;
-	height: 35%;
+	height: 32%;
 	border-style: solid;
 	border-radius: 12px;
 	border-width: 2px;
 	padding: 2% 2% 2% 2%;
 	margin: 15% 0 0 28%;
+}
+
+.gameword-display{
+	text-align: center;
+	color: #092C5C;
+	font-weight: bolder;
+	border-style: dotted;
+	border-width: 3px;
+	border-color: #95C0F7;
+	margin: 1% 0 0 0;
+	padding: 1% 1% 1% 1%;
+	font-family: avenir;
+	font-size: 24px;
 }
 
 .game-number {
@@ -183,6 +196,7 @@ grey 			#aaaaaa;
 .letter-box {
 	position: relative;
 	width: 8%;
+/*	height: 45px;*/
 	display: inline-block;
 	border-style: solid;
 	border-color: #95C0F7;

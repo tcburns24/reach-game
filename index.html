@@ -41,14 +41,12 @@
 				<div class="col-lg-6">Word length:</div>
 				<div class="col-lg-2">
 					<select class="selector" style="padding:0 1% 0 1%;">
-						<option value=3>3</option>
 						<option value=4>4</option>
 						<option value=5>5</option>
 						<option value=6>6</option>
 						<option value=7>7</option>
 						<option value=8>8</option>
 						<option value=9>9</option>
-						<option value=10>10</option>
 					</select>
 				</div>
 			</div>
@@ -81,12 +79,17 @@
 		</div>
 		
 		<div class="modal end-game-win">
+			<div class="row">
+				<div class="col-lg-3"></div>
+				<div class="col-lg-6 gameword-display gameword-display-win"></div>
+			</div>
 			<div class="row" style="text-align: center">
 				<h2 style="font-family: avenir">You Win!</h2>
 			</div>
 			<div class="row">
 				<div class="col-lg-12" style="text-align: center; font-family: avenir">
-					Never quit when you're on a winning streak.<br/> How about another game?
+					<p>Never quit when you're on a winning streak.</p>
+					<p>How about another game?</p>
 				</div>
 			</div>
 			<div class="row" style="text-align:center; margin: 5% 0 0 0">
@@ -100,6 +103,10 @@
 		</div>
 		
 		<div class="modal end-game-loss">
+			<div class="row">
+				<div class="col-lg-3"></div>
+				<div class="col-lg-6 gameword-display gameword-display-loss"></div>
+			</div>
 			<div class="row" style="text-align: center">
 				<h2 style="font-family: avenir">Aw snap...</h2>
 			</div>
@@ -113,7 +120,7 @@
 					<input type="button" class="btn btn-danger" value="Cancel" onclick="cancelModal()"/>
 				</div>
 				<div class="col-lg-4">
-					<input type="button" class="btn btn-info" value="Start Game" onclick="cancelModal(); showModal('start-game')"/>
+					<input type="button" class="btn btn-success" value="New Game" onclick="cancelModal();showModal('start-game')"/>
 				</div>
 			</div>
 		</div>
