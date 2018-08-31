@@ -14,7 +14,7 @@ There are two ways to enjoy this version of hangman, locally or remote. The inst
 
 	
 #### 2) Remote 
-To play remotely, enter this URL in your browser:[example] (https://reach-2018-hangman.herokuapp.com/ "LINK") . The game is hosted on Heroku for your convenience.
+To play remotely, enter this URL in your browser:(https://reach-2018-hangman.herokuapp.com/) . The game is hosted on Heroku for your convenience.
 
 
 #### Allowing CORS
@@ -40,11 +40,11 @@ Safari’s security standards are particularly high. If the game still doesn’t
 
 
 ###### Firefox
-1) Download and add the “Cors Everywhere” extension here: [example](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/?src=recommended "CORS Everywhere") 
+1) Download and add the “Cors Everywhere” extension [here](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/?src=recommended "CORS Everywhere") 
 
 
 ## WHY WAS THIS BUILT?
-This hangman game was built as part of the application process to LinkedIn’s 2018 REACH apprenticeship. For more information about REACH, you can visit [here](https://careers.linkedin.com/reach "REACH")
+This hangman game was built as part of the application process to LinkedIn’s 2018 REACH apprenticeship. For more information about REACH, you visit [this page](https://careers.linkedin.com/reach "REACH").
 
 Hangman was written in plain JavaScript, HTML, and CSS. Since this project is part of the application process to REACH, I wanted to present an honest representation of my programming skills, therefore I opted not to use a JavaScript framework like React or Vue. The code “base” is meant to be web development in its purest form: JS + HTML + CSS = Love and joy!
 
