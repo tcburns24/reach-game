@@ -90,7 +90,7 @@ function newGame() {
 	letterBoxRow.innerHTML = '';
 	gameWord = null;
 	for (var i=0; i<bodyParts.length; i++) {
-		bodyParts[i].style.display = 'none';
+		bodyParts[i].style.opacity = '0.2';
 	}
 	for (var i=0; i<document.getElementsByClassName('letterdiv').length; i++) {
 		document.getElementsByClassName('letterdiv')[i].style.color = 'black';
@@ -105,6 +105,7 @@ function newGame() {
 }
 
 function showModal(modalName) {
+	console.log('showModal(' + modalName + ')')
 	document.getElementsByClassName(modalName)[0].style.display = 'inline';
 	modalName == 'end-game-win' ? 
 		document.getElementsByClassName('gameword-display-win')[0].textContent = gameWord.toUpperCase() :
@@ -117,7 +118,6 @@ function cancelModal() {
 	for (var i=0; i<modals.length; i++) {
 		if(modals[i].style.display != 'none') {
 			modals[i].style.display = 'none';
-			break;
 		}
 	}
 	document.getElementsByClassName('game')[0].style.opacity = '1.0';
@@ -128,8 +128,8 @@ function cancelModal() {
 function incorrectLetter() {
 	if (wrongLetterCount < 6) {
 		for (var i=0; i<bodyParts.length; i++) {
-			if (bodyParts[i].style.display == 'none') {
-				bodyParts[i].style.display = 'inline';
+			if (bodyParts[i].style.opacity == '0.2') {
+				bodyParts[i].style.opacity = '1.0';
 				break;
 			}
 		}
