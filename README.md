@@ -10,7 +10,7 @@ Welcome to Hangman! This version of hangman offers human-vs-computer play where 
 There are two ways to enjoy this version of hangman, locally or remote. The instructions for both options are included below. Please pay extra attention to the Allowing CORS section; this is important for both local and remote players.
 
 #### 1) Locally
-	To play Hangman locally, visit this public github repository (https://github.com/tcburns24/reach-game), and clone it to your machine. CD into the cloned directory, and enter `rackup` on your terminal. The game should be available on your localhost port 9292.
+To play Hangman locally, visit this public github repository (https://github.com/tcburns24/reach-game), and clone it to your machine. CD into the cloned directory, and enter `rackup` on your terminal. The game should be available on your localhost port 9292.
 
 	
 #### 2) Remote 
