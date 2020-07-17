@@ -1,6 +1,6 @@
 # HANGMAN
 
-#### As part of the applicaiton process into LinkedIn's 2018 REACH Apprenticeship cohort.
+#### As part of the application process into LinkedIn's 2018 REACH Apprenticeship cohort.
 
 
 ## WHAT IS HANGMAN?
